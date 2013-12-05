@@ -1,0 +1,21 @@
+# ECLIPSE
+.project
+.pydevproject
+
+# EXTENSIONS
+*.pyc
+*.sqlite
+*.tar.gz
+
+# TEMPORARY FILES
+_pip_cache
+static_collection
+Thumbs.db
+
+# VIRTUALENV
+build
+pyenv
+
+# JS
+bower_components
+node_modules

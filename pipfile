@@ -1,0 +1,18 @@
+# SysAdmin
+#fabric
+#Werkzeug
+
+
+# Django
+django
+django-extensions
+django-model-utils
+
+# Database
+south
+
+# TESTING
+mock
+
+# API
+django-tastypie
