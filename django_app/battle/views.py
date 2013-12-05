@@ -1,3 +1,4 @@
-from django.shortcuts import render
+from django.views.generic.base import TemplateView
 
-# Create your views here.
+class BattleAppView(TemplateView):
+    template_name = 'battle-app.html'

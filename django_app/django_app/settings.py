@@ -26,6 +26,11 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ADMINS = (
+     ('Harp B', 'hi@harpb.com'),
+)
+INTERNAL_IPS = ('127.0.0.1',)
+ALLOWED_HOSTS = ('.harpb.com')
 
 # Application definition
 
@@ -36,6 +41,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Packages added
+    'django_extensions',
+    'south',
+    # Our Apps
+    'battle'
 )
 
 MIDDLEWARE_CLASSES = (
