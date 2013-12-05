@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+encoding//django_app/battle/migrations/0001_initial.py=utf-8
+encoding//django_app/battle/migrations/0002_auto__add_player__add_battle.py=utf-8
+encoding//django_app/battle/migrations/0003_add_index_Battle_start.py=utf-8

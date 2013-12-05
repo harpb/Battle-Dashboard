@@ -27,7 +27,7 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 ADMINS = (
-     ('Harp B', 'hi@harpb.com'),
+     ('Harp B', 'hi@harpb.com'),  # user: harp, password: greatsolution
 )
 INTERNAL_IPS = ('127.0.0.1',)
 ALLOWED_HOSTS = ('.harpb.com')
@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     # Packages added
     'django_extensions',
     'south',
+    'tastypie',
     # Our Apps
     'battle'
 )
@@ -66,9 +67,18 @@ WSGI_APPLICATION = 'django_app.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'kixeye',  # Or path to database file if using sqlite3.
+        'USER': 'root',  # Not used with sqlite3.
+        'PASSWORD': '',  # Not used with sqlite3.
+        'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',  # Set to empty string for default. Not used with sqlite3.
     }
 }
 
