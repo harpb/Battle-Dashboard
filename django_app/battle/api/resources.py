@@ -3,6 +3,7 @@ from tastypie import fields
 from tastypie.resources import ModelResource
 from tastypie.serializers import Serializer
 from tastypie.authentication import BasicAuthentication
+from tastypie.constants import ALL
 
 class KixeyeResource(ModelResource):
     class Meta:
@@ -17,6 +18,9 @@ class PlayerResource(KixeyeResource):
     class Meta(KixeyeResource.Meta):
         queryset = Player.objects.all()
         resource_name = 'player'
+        filtering = {
+            'nickname': ALL
+        }
 
 class BattleResource(KixeyeResource):
     attacker = fields.ForeignKey(PlayerResource, 'attacker')
@@ -26,3 +30,7 @@ class BattleResource(KixeyeResource):
     class Meta(KixeyeResource.Meta):
         queryset = Player.objects.all()
         resource_name = 'battle'
+        filtering = {
+            'start': ALL,
+            'end': ALL
+        }
