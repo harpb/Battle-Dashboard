@@ -1,4 +1,7 @@
 from tastypie.api import Api
+from battle.api.resources import PlayerResource, BattleResource
 
-api = Api(api_name='v1')
-urlpatterns = api.urls
+v1_api = Api(api_name='v1')
+v1_api.register(BattleResource())
+v1_api.register(PlayerResource())
+urlpatterns = v1_api.urls
