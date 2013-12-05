@@ -1,0 +1,157 @@
+html,
+body {
+    font-size: 15px;
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    margin: 0px;
+    color: #555555;
+    min-width: 320px;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+/*
+p,
+ul,
+.ui.grid,
+li {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size-adjust: none;
+}*/
+
+ul.list {
+    list-style-type: disc;
+}
+
+ul.list li {
+    list-style-position: outside;
+}
+
+/****************************************************************
+** UTILITIES
+***************************************************************/
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-justify {
+    text-align: justify;
+}
+
+.push-down {
+    margin-bottom: 1em;
+}
+
+.push-left {
+    margin-left: 1em;
+}
+
+.push-right {
+    margin-right: 1em;
+}
+
+.push-up {
+    margin-top: 1em;
+}
+
+.scrollable {
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #table-of-content {
+        margin-left: 0px;
+        border-left-width: 1px;
+    }
+}
+
+@media (min-width: 1600px) {
+    #table-of-content {
+        margin-left: -41px;
+    }
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+
+.no-border-radius {
+    border-radius: 0px;
+}
+
+code {
+    overflow-x: auto;
+}
+
+.row {
+    height: 100%;
+}
+.vertical-align {
+    letter-spacing: -0.31em;
+}
+.vertical-align:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.vertical-align-middle,
+.vertical-align-bottom {
+    display: inline-block;
+    letter-spacing: normal;
+    max-width: 100%;
+}
+.vertical-align-middle {
+    vertical-align: middle;
+}
+.vertical-align-bottom {
+    vertical-align: bottom;
+}
+.height-1-1 {
+    height: 100%;
+}
+.height-1-2 {
+    height: 50%;
+}
+.three.row.grid {
+    height: 100%;
+}
+
+.three.row.grid > .row{
+    height: 33.333%
+}

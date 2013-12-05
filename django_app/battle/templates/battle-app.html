@@ -1,1 +1,240 @@
-battle-app.html
+{% extends "semantic-ui-base.html" %}
+
+{% block extra-css %}
+<link rel="stylesheet" href="/static/battle/battle.css"/>
+{%endblock%}
+
+{% block extra-js %}
+<script src="/static/bower_components/underscore/underscore.js"></script>
+<script src="/static/bower_components/angular/angular.js"></script>
+<script src="/static/bower_components/restangular/dist/restangular.js"></script>
+<script src="/static/battle/battle.js"></script>
+<script src="/static/battle/auth_service.js"></script>
+<script src="/static/battle/base64_service.js"></script>
+{%endblock%}
+
+{% block body %}
+<body class="fill-height fluid container" ng-controller="BattleController" ng-app="BattleApp">
+<div class="ui no-margin menu">
+    <a class="active item" href="">
+        <i class="home icon"></i> HarpB
+    </a>
+
+    <div class="ui basic form right item no-padding">
+        <div class="inline fields">
+            <div class="field">
+                <input placeholder="Username" type="text"
+                       ng-model="authentication_credentials.username">
+            </div>
+            <div class="field">
+                <input placeholder="Password" type="password"
+                       ng-model="authentication_credentials.password">
+            </div>
+            <div class="field">
+                <button class="ui blue button" ng-click="login()">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grid ui" ng-if="authentication_credentials.isAuthenticated">
+<div class="six wide column">
+    <div class="ui menu no-margin">
+        <div class="menu">
+            <a class="active item">
+                <i class="users icon"></i>
+                Battles
+            </a>
+            <a class="item blue labeled icon button" ng-click="newBattleForm()">
+                <i class="add icon"></i> NEW
+            </a>
+
+            <div class="ui action input float-right">
+                <input placeholder="Start Datetime" type="text">
+                <input placeholder="End Datetime" type="text">
+                <div class="ui button">Filter</div>
+            </div>
+        </div>
+    </div>
+    <table class="ui table">
+        <thead>
+        <tr>
+            <th>Attacker</th>
+            <th>Defender</th>
+            <th>Start</th>
+            <th>End</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="battle in battles | orderBy: 'id'"
+            >
+            <td ng-class="{positive: battle.winner == battle.attacker.resource_uri}"><< battle.attacker.nickname >> (#<< battle.attacker.id >>)</td>
+            <td ng-class="{positive: battle.winner == battle.defender.resource_uri}"><< battle.defender.nickname >> (#<< battle.defender.id >>)</td>
+            <td><< battle.start >></td>
+            <td><< battle.end >></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <th colspan="4">
+                << battle.length >> Battles
+            </th>
+        </tr>
+        </tfoot>
+    </table>
+
+    <div class="ui new battle small modal">
+        <i class="close icon"></i>
+
+        <div class="header">
+            New Battle
+        </div>
+        <div class="content">
+            <div class="ui form" ng-class="{loading: battlePayload.loading}">
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>Attacker ID</label>
+                        <input type="text" ng-model="battlePayload.attacker">
+                    </div>
+                    <div class="field">
+                        <label>Defender ID</label>
+                        <input type="text" ng-model="battlePayload.defender">
+                    </div>
+                </div>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>Start Datetime</label>
+                        <input type="text" ng-model="battlePayload.start">
+                    </div>
+                    <div class="field">
+                        <label>End Datetime</label>
+                        <input type="text" ng-model="battlePayload.end">
+                    </div>
+                </div>
+                <div class="inline field">
+                    <input class="ui checkbox" type="checkbox" ng-model="battlePayload.attacker_wins">
+                    <label>Attacker Wins?</label>
+                </div>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui button" ng-click="resetNewBattleForm()">Cancel</div>
+            <div class="ui positive button" ng-click="saveBattle()">Create</div>
+        </div>
+    </div>
+</div>
+
+<div class="ten wide column">
+    <div class="ui menu no-margin">
+        <div class="menu">
+            <a class="active item">
+                <i class="users icon"></i>
+                Players
+            </a>
+            <a class="item blue labeled icon button" ng-click="newPlayerForm()">
+                <i class="add icon"></i> NEW
+            </a>
+
+            <div class="ui action input float-right">
+                <input placeholder="Nickname..." type="text">
+
+                <div class="ui button">Filter</div>
+            </div>
+        </div>
+    </div>
+    <table class="ui table">
+        <thead>
+        <tr>
+            <th>Nickname</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Win Streak</th>
+            <th>Created</th>
+            <th>Last Seen</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="player in players | orderBy: 'id'"
+            ng-dblclick="editPlayer(player)"
+            ng-switch="player.editing">
+            <td ng-switch-default><< player.nickname >></td>
+            <td ng-switch-default><< player.first_name >></td>
+            <td ng-switch-default><< player.last_name >></td>
+
+            <td ng-switch-when="true">
+                <div class="ui input">
+                    <input type="text" placeholder="Nickname" ng-model="player.nickname">
+                </div>
+            </td>
+            <td ng-switch-when="true">
+                <div class="ui input">
+                    <input type="text" placeholder="First Name" ng-model="player.first_name">
+                </div>
+            </td>
+            <td ng-switch-when="true">
+                <div class="ui input">
+                    <input type="text" placeholder="Last Name" ng-model="player.last_name">
+                </div>
+            </td>
+
+            <td><< player.wins >></td>
+            <td><< player.losses >></td>
+            <td><< player.current_win_streak >></td>
+            <td><< player.created >></td>
+            <td><< player.last_seen >></td>
+
+            <td ng-switch-when="true" ng-click="updatePlayer(player)">
+                <div class="ui action input">
+                    <div class="ui teal icon button"><i class="copy icon"></i></div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <th colspan="9">
+                << players.length >> Players
+            </th>
+        </tr>
+        </tfoot>
+    </table>
+
+    <div class="ui new player small modal">
+        <i class="close icon"></i>
+
+        <div class="header">
+            New Player
+        </div>
+        <div class="content">
+            <div class="ui form" ng-class="{loading: playerPayload.loading}">
+                <div class="field">
+                    <label>Nickname</label>
+                    <input type="text" ng-model="playerPayload.nickname">
+                </div>
+                <div class="field">
+                    <label>First name</label>
+                    <input type="text" ng-model="playerPayload.first_name">
+                </div>
+                <div class="field">
+                    <label>Last name</label>
+                    <input type="text" ng-model="playerPayload.last_name">
+                </div>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui button" ng-click="resetNewPlayerForm()">Cancel</div>
+            <div class="ui positive button" ng-click="savePlayer()">Create</div>
+        </div>
+    </div>
+</div>
+</div>
+
+<footer class="ui tertiary segment center aligned no-margin">
+    ©2013 HarpB
+</footer>
+{% endblock %}

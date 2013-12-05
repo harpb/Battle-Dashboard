@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+
+    <!-- Standard Meta -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Site Properities -->
+    <title>{% block title %}{% if title %} {{ title}} | HarpB{% else %} HarpB {% endif %}{%endblock%}</title>
+    {% block icon %}
+    <link rel="shortcut icon" type="image/ico" href="/static/ico/harpb.ico">
+    {% endblock %}
+    {% block css %}
+    <link id="data-uikit-theme" rel="stylesheet" href="/static/style/harpb-ui.css">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
+    {% endblock %}
+    {% block google-tracking %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-40640671-2', 'harpb.com');
+        ga('send', 'pageview');
+    </script>
+    {% endblock %}
+</head>
+<body class="fill-height fluid container">
+
+    <!-- PAGE STRUCTURE -->
+    {% block header %}
+    <div class="ui no-margin menu">
+        <a class="blue item" name="toggle-sidebar" onclick="toggleSidebar(this)">
+            <i class="align justify icon"></i>
+        </a>
+        {% block logo %}
+        <a class="active item" href="">
+            <i class="home icon"></i> HarpB
+        </a>
+        {% endblock%}
+        {% block header-menu %}{% endblock%}
+        <!--<div class="ui dropdown item">-->
+        <!--<div class="text">Crave</div>-->
+        <!--<i class="dropdown icon"></i>-->
+
+        <!--<div class="menu">-->
+        <!--<div class="item">Hello World</div>-->
+        <!--<div class="item">Remove</div>-->
+        <!--<div class="item">Hide</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="right menu">
+            {% if request.user.is_authenticated %}
+            <div class="ui dropdown item">
+                <div class="text">Hi, {{ request.user.get_full_name }} </div>
+                <i class="dropdown icon"></i>
+
+                <div class="menu">
+                    <a class="item" href="/connection/">
+                        <i class="settings icon"></i> Web Connections
+                    </a>
+                    <a class="item" href="/user/logout/">
+                        <i class="sign out icon"></i> Logout
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <div class="ui fitted item">
+                <div class="ui buttons">
+                    <a class="ui green button" href="/user/signup/?next={{ request.path }}">
+                        SignUp
+                    </a>
+                    <a class="or"></a>
+                    <a class="ui blue button" href="/user/login/?next={{ request.path }}">
+                        <i class="sign in icon"></i>
+                        Login
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="ui inverted vertical harpb sidebar menu">
+        {% for domain in request.services %}
+            <a class="{% if domain.is_active %} active {% endif %} item" href="{{ domain.absolute_path }}">
+                <i class="{{ domain.ico_class }} icon"></i>
+                {{ domain.title }}
+            </a>
+        {% endfor %}
+        <!--<div class="item hide">-->
+            <!--<b>Resources</b>-->
+            <!--<div class="menu">-->
+                <!--<a class="item" href="/about-us/">About</a>-->
+                <!--&lt;!&ndash;<a class="item" href="http://harpb.com/blog/">Blog</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a class="item">Contact Us</a>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+    <footer class="ui tertiary segment center aligned no-margin">
+        ©2013 HarpB
+    </footer>
+    {% endblock %}
+    <!-- JS SCRIPT -->
+    {% block js %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/static/bower_components/jquery/jquery.min.js"><\/script>')</script>
+    <script src="/static/bower_components/semantic/build/packaged/javascript/semantic.min.js"></script>
+    {%endblock%}
+    {% block extra-js %}{%endblock%}
+</body>
+</html>

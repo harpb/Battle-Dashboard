@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>Battle Log - HarpB</title>
+    <!-- Required -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700'
+          rel='stylesheet' type='text/css'>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/bower_components/semantic/build/packaged/css/semantic.min.css"/>
+    <link rel="stylesheet" href="/static/style/defaults.css"/>
+    {% block extra-css %}{%endblock%}
+
+    <!-- JS SCRIPT -->
+    {% block js %}
+    <script src="/static/bower_components/jquery/jquery.js"></script>
+    <script src="/static/bower_components/semantic/build/packaged/javascript/semantic.min.js"></script>
+    {%endblock%}
+    {% block extra-js %}{%endblock%}
+</head>
+{% block body %}
+<body class="fill-height fluid container">
+    {% block header %}
+    <div class="ui no-margin menu">
+        <a class="active item" href="">
+            <i class="home icon"></i> HarpB
+        </a>
+    </div>
+    {% endblock %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% block footer %}
+    <footer class="ui tertiary segment center aligned no-margin">
+        ©2013 HarpB
+    </footer>
+    {% endblock %}
+</body>
+{%endblock%}
+</html>
