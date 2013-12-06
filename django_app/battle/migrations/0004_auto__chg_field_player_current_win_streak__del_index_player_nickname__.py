@@ -11,6 +11,7 @@ class Migration(SchemaMigration):
 
         # Changing field 'Player.current_win_streak'
         db.alter_column(u'battle_player', 'current_win_streak', self.gf('django.db.models.fields.IntegerField')())
+
         # Removing index on 'Player', fields ['nickname']
         db.delete_index(u'battle_player', ['nickname'])
 
@@ -24,7 +25,6 @@ class Migration(SchemaMigration):
 
         # Adding index on 'Player', fields ['nickname']
         db.create_index(u'battle_player', ['nickname'])
-
 
         # Changing field 'Player.current_win_streak'
         db.alter_column(u'battle_player', 'current_win_streak', self.gf('django.db.models.fields.PositiveIntegerField')())
