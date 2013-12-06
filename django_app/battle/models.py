@@ -32,7 +32,10 @@ class Player(TimeStampedModel):
         if save:
             self.save()
 
-class Battle(TimeFramedModel):
+class Battle(models.Model):
     attacker = models.ForeignKey(Player, related_name = 'attacker')
     defender = models.ForeignKey(Player, related_name = 'defender')
     winner = models.ForeignKey(Player, related_name = 'winner')
+    start = models.DateTimeField(_('start'))
+    end = models.DateTimeField(_('end'))
+
