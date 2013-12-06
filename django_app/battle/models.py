@@ -8,9 +8,9 @@ class Player(TimeStampedModel):
     first_name = models.CharField(_('first name'), max_length = 30, blank = True)
     last_name = models.CharField(_('last name'), max_length = 30, blank = True)
     nickname = models.CharField(
-        _('last name'), max_length = 30, blank = True, db_index = True)
+        _('last name'), max_length = 30, blank = True, unique = True)
     # Stats
-    current_win_streak = models.PositiveIntegerField(default = 0)
+    current_win_streak = models.IntegerField(default = 0)
     losses = models.PositiveIntegerField(default = 0)
     wins = models.PositiveIntegerField(default = 0)
     # Status
