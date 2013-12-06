@@ -1,0 +1,20 @@
+[
+	{
+		"fields": {
+			"date_joined": "2012-10-15T16:43:38Z",
+			"email": "hi@harpb.com",
+			"first_name": "",
+			"groups": [],
+			"is_active": true,
+			"is_staff": false,
+			"is_superuser": false,
+			"last_login": "2013-05-19T19:02:03Z",
+			"last_name": "",
+			"password": "pbkdf2_sha256$12000$cMHierQsARbc$iV52q4q3CXegeSasF7RB4O0cyRG5NzVo5OfvurHyfA4=",
+			"user_permissions": [],
+			"username": "harp"
+		},
+		"model": "auth.user",
+		"pk": 1
+	}
+]

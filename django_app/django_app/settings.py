@@ -31,6 +31,7 @@ ADMINS = (
 )
 INTERNAL_IPS = ('127.0.0.1',)
 ALLOWED_HOSTS = ('.harpb.com')
+SERVER_ENVIRONMENT = 'LOCAL'
 
 # Application definition
 
@@ -46,7 +47,8 @@ INSTALLED_APPS = (
     'south',
     'tastypie',
     # Our Apps
-    'battle'
+    'battle',
+    'utilities'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,3 +102,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#===============================================================================
+# SERVER ENVIRONMENT
+#===============================================================================
+import environment
+environment.configure()

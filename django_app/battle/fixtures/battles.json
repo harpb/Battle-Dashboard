@@ -1,0 +1,46 @@
+[
+	{
+		"fields": {
+			"attacker": 1,
+			"defender": 2,
+			"end": "2013-12-05T23:48:59Z",
+			"start": "2013-12-05T23:48:59Z",
+			"winner": 1
+		},
+		"model": "battle.battle",
+		"pk": 1
+	},
+	{
+		"fields": {
+			"attacker": 1,
+			"defender": 2,
+			"end": "2013-12-05T23:48:59Z",
+			"start": "2013-12-05T23:48:59Z",
+			"winner": 2
+		},
+		"model": "battle.battle",
+		"pk": 2
+	},
+	{
+		"fields": {
+			"attacker": 1,
+			"defender": 3,
+			"end": "2013-12-05T23:48:59Z",
+			"start": "2013-12-05T23:48:59Z",
+			"winner": 3
+		},
+		"model": "battle.battle",
+		"pk": 3
+	},
+	{
+		"fields": {
+			"attacker": 2,
+			"defender": 3,
+			"end": "2013-12-05T23:48:59Z",
+			"start": "2013-12-05T23:48:59Z",
+			"winner": 3
+		},
+		"model": "battle.battle",
+		"pk": 4
+	}
+]
