@@ -28,7 +28,6 @@ class TestBattleResource(HarpTestCase):
         # Scope out the data for correctness.
         self.assertEqual(len(self.deserialize(resp)['objects']), 4)
 
-
 if __name__ == "__main__":
     test_methods = []
 #     test_methods = ['test_get_list_json']

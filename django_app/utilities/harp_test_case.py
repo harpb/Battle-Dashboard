@@ -16,9 +16,9 @@ class HarpTestCase(ResourceTestCase):
     username = 'harp'
     password = 'great'
     fixtures = [
-        'battles.json',
+        'auth_user.json',
         'players.json',
-        'auth_user.json'
+        'battles.json'
     ]
     user_id = 1
 

@@ -16,6 +16,22 @@ class Player(TimeStampedModel):
     # Status
     last_seen = models.DateTimeField(_('last seen'), default = timezone.now)
 
+    def on_win(self, save = False):
+        if self.current_win_streak < 0:
+            self.current_win_streak = 0
+        self.current_win_streak += 1
+        self.wins += 1
+        if save:
+            self.save()
+
+    def on_loss(self, save = False):
+        if self.current_win_streak > 0:
+            self.current_win_streak = 0
+        self.current_win_streak += -1
+        self.losses += 1
+        if save:
+            self.save()
+
 class Battle(TimeFramedModel):
     attacker = models.ForeignKey(Player, related_name = 'attacker')
     defender = models.ForeignKey(Player, related_name = 'defender')
