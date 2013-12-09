@@ -9,6 +9,8 @@
 
     AngularForm.prototype.enabled = false;
 
+    AngularForm.prototype.errors = null;
+
     AngularForm.prototype.selector = null;
 
     AngularForm.prototype.submitting = false;
@@ -17,6 +19,7 @@
 
     function AngularForm(selector) {
       this.selector = selector;
+      this.errors = {};
       this.fields = {};
     }
 

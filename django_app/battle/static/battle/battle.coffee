@@ -14,6 +14,7 @@ BattleController = ($scope, Restangular, Auth) ->
         isAuthenticated: false
     }
     $scope.login = ->
+        console.info('$scope.login')
         Auth.setCredentials(
             $scope.authentication_credentials.username,
             $scope.authentication_credentials.password
@@ -30,10 +31,25 @@ BattleController = ($scope, Restangular, Auth) ->
     ########################################################
     # Player
     ########################################################
+    $scope.nicknameFilter = 'harp'
+    $scope.filterPlayersForm = new AngularForm()
+    $scope.filterPlayers = ($event, text = '')->
+        $scope.nicknameFilter = text
+        console.info('filterPlayers', $event, $scope.nicknameFilter, text)
+        getPlayers()
+        $event.preventDefault()
+
     getPlayers = ->
-        $scope.playerList = playerApi.getList().then((response)->
+        $scope.filterPlayersForm.submitting = true
+        data = {}
+        if $scope.nicknameFilter.length > 0
+            data.nickname = $scope.nicknameFilter
+        console.info('data', $scope.nicknameFilter, data)
+
+        $scope.playerList = playerApi.getList(data).then((response)->
+            $scope.filterPlayersForm.submitting = false
             $scope.players = response['objects']
-            console.info('players', $scope.players, $scope.playerList)
+#            console.info('players', $scope.players, $scope.playerList)
         )
 
     $scope.newPlayerForm = new AngularForm('.new.player.modal')
@@ -50,16 +66,37 @@ BattleController = ($scope, Restangular, Auth) ->
 
     $scope.updatePlayer = (player)->
         player.editing = false
-#        $scope.playerList.put(player)
-#        playerApi.put(player)
 
     # Battles
-    getBattles = ->
-        $scope.battleList = battleApi.getList().then((response)->
-            $scope.battles = response['objects']
-        )
-
     exampleDateTime = '2013-12-10 6:10:00'
+    $scope.filterBattlesForm = new AngularForm()
+    $scope.filterBattlesForm.addField('from', 'Start', placeholder = exampleDateTime)
+    $scope.filterBattlesForm.addField('to', 'End', laceholder = exampleDateTime)
+    $scope.filterBattles = ($event, start = '', end = '')->
+        console.info('filterPlayers', $event, start, end, $scope.filterBattlesForm.fields)
+        getBattles()
+        $event.preventDefault()
+
+    getBattles = ->
+        $scope.filterBattlesForm.submitting = true
+        data = {}
+        if $scope.filterBattlesForm.fields.from.value and \
+                $scope.filterBattlesForm.fields.from.value.length > 0
+            data.start__gte = $scope.filterBattlesForm.fields.from.value
+        if $scope.filterBattlesForm.fields.to.value and\
+                $scope.filterBattlesForm.fields.to.value.length > 0
+            data.end__lte = $scope.filterBattlesForm.fields.to.value
+        console.info('data', $scope.nicknameFilter, data)
+        $scope.battleList = battleApi.getList(data).then((response)->
+            $scope.filterBattlesForm.valid = true
+            $scope.filterBattlesForm.submitting = false
+            $scope.battles = response['objects']
+        ,(response)->
+            $scope.filterBattlesForm.valid = false
+            $scope.filterBattlesForm.submitting = false
+            console.info('response.error', response)
+            $scope.filterBattlesForm.errors = response.data.error
+        )
     $scope.newBattleForm = new AngularForm('.new.battle.modal')
     $scope.newBattleForm.addField('attacker', 'Attacker')
     $scope.newBattleForm.addField('defender', 'Defender')
@@ -78,38 +115,17 @@ BattleController = ($scope, Restangular, Auth) ->
     $scope.saveBattle = ($event) ->
         $event.preventDefault()
         $scope.newBattleForm.submit(battleApi, $scope.battles)
-#
-#    currentDate = new Date()
-#    $scope.battlePayload =
-#        attacker: null
-#        defender: null
-#        attacker_wins: false
-#        start: currentDate.toISOString()
-#        end: currentDate.toISOString()
-#
-#    $scope.saveBattle = () ->
-#        $scope.battlePayload.loading = true
-#        if $scope.battlePayload.attacker_wins
-#            $scope.battlePayload.winner = $scope.battlePayload.attacker
-#        else
-#            $scope.battlePayload.winner = $scope.battlePayload.defender
-#
-#        battleApi.post($scope.battlePayload).then((response)->
-#            $scope.battlePayload.loading = false
-#            $scope.battles.push(response)
-#            $scope.resetNewBattleForm()
-#        )
 
-    # Ready
+    ########################################################
+    # Start the app
+    ########################################################
     $scope.login()
-#    $scope.savePlayer()
 
 ########################################################
 # Battle App
 ########################################################
 BattleApp = angular.module('BattleApp', ['restangular']);
 window.BattleApp = BattleApp
-#window.battleApp = BattleApp
 BattleApp.config((RestangularProvider)->
     RestangularProvider.setBaseUrl('/api/v1/')
 )

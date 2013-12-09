@@ -29,7 +29,7 @@
     <favorites_list name="Kixeye Challenge" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.54562384">
+    <splitter split-orientation="horizontal" split-proportion="0.5704531">
       <split-first>
         <leaf>
           <file leaf-file-name="battle.less" pinned="false" current="false" current-in-tab="false">
@@ -41,19 +41,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="battle-app.html" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="battle-app.html" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/django_app/battle/templates/battle-app.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="229" column="78" selection-start="9367" selection-end="9367" vertical-scroll-proportion="0.2942675" vertical-offset="3662" max-vertical-offset="4556">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="angular_form.coffee" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/angular_form.coffee">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="39" column="44" selection-start="979" selection-end="979" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
+                <state line="107" column="30" selection-start="4226" selection-end="4226" vertical-scroll-proportion="0.89171976" vertical-offset="1119" max-vertical-offset="4964">
                   <folding />
                 </state>
               </provider>
@@ -72,10 +63,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="battle.coffee" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="battle.coffee" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="23" column="29" selection-start="820" selection-end="833" vertical-scroll-proportion="-1.0291262" vertical-offset="1239" max-vertical-offset="2125">
+                <state line="87" column="23" selection-start="3351" selection-end="3351" vertical-scroll-proportion="0.46225318" vertical-offset="1081" max-vertical-offset="2397">
                   <folding />
                 </state>
               </provider>
@@ -111,8 +102,8 @@
         <option value="$PROJECT_DIR$/django_app/battle/static/battle/base64_service.js" />
         <option value="$PROJECT_DIR$/django_app/battle/static/battle/auth_service.js" />
         <option value="$PROJECT_DIR$/django_app/battle/static/battle/angular_form.coffee" />
-        <option value="$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee" />
         <option value="$PROJECT_DIR$/django_app/battle/templates/battle-app.html" />
+        <option value="$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee" />
       </list>
     </option>
   </component>
@@ -491,21 +482,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/angular_form.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="44" selection-start="979" selection-end="979" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="29" selection-start="820" selection-end="833" vertical-scroll-proportion="-1.0291262" vertical-offset="1239" max-vertical-offset="2125">
+        <state line="11" column="19" selection-start="219" selection-end="219" vertical-scroll-proportion="0.21395881" vertical-offset="0" max-vertical-offset="1479">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/django_app/battle/templates/battle-app.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="229" column="78" selection-start="9367" selection-end="9367" vertical-scroll-proportion="0.2942675" vertical-offset="3662" max-vertical-offset="4556">
+        <state line="107" column="30" selection-start="4226" selection-end="4226" vertical-scroll-proportion="0.89171976" vertical-offset="1119" max-vertical-offset="4964">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="23" selection-start="3351" selection-end="3351" vertical-scroll-proportion="0.46225318" vertical-offset="1081" max-vertical-offset="2397">
           <folding />
         </state>
       </provider>

@@ -2,12 +2,14 @@ class AngularForm
     _id: 1
     fields: null
     enabled: false
+    errors: null
     selector: null
     submitting: false
     valid: false
 
     constructor: (selector)->
         @selector = selector
+        @errors = {}
         @fields = {}
 
     closeDom: ->

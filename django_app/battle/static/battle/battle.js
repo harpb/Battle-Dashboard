@@ -3,13 +3,14 @@
   var BattleApp, BattleController;
 
   BattleController = function($scope, Restangular, Auth) {
-    var battleApi, defaultValue, exampleDateTime, getBattles, getPlayers, placeholder, playerApi;
+    var battleApi, defaultValue, exampleDateTime, getBattles, getPlayers, laceholder, placeholder, playerApi;
     $scope.authentication_credentials = {
       username: 'harp',
       password: 'great',
       isAuthenticated: false
     };
     $scope.login = function() {
+      console.info('$scope.login');
       Auth.setCredentials($scope.authentication_credentials.username, $scope.authentication_credentials.password);
       $scope.authentication_credentials.isAuthenticated = true;
       getBattles();
@@ -17,10 +18,28 @@
     };
     playerApi = Restangular.all("player/");
     battleApi = Restangular.all("battle/");
+    $scope.nicknameFilter = 'harp';
+    $scope.filterPlayersForm = new AngularForm();
+    $scope.filterPlayers = function($event, text) {
+      if (text == null) {
+        text = '';
+      }
+      $scope.nicknameFilter = text;
+      console.info('filterPlayers', $event, $scope.nicknameFilter, text);
+      getPlayers();
+      return $event.preventDefault();
+    };
     getPlayers = function() {
-      return $scope.playerList = playerApi.getList().then(function(response) {
-        $scope.players = response['objects'];
-        return console.info('players', $scope.players, $scope.playerList);
+      var data;
+      $scope.filterPlayersForm.submitting = true;
+      data = {};
+      if ($scope.nicknameFilter.length > 0) {
+        data.nickname = $scope.nicknameFilter;
+      }
+      console.info('data', $scope.nicknameFilter, data);
+      return $scope.playerList = playerApi.getList(data).then(function(response) {
+        $scope.filterPlayersForm.submitting = false;
+        return $scope.players = response['objects'];
       });
     };
     $scope.newPlayerForm = new AngularForm('.new.player.modal');
@@ -37,12 +56,43 @@
     $scope.updatePlayer = function(player) {
       return player.editing = false;
     };
+    exampleDateTime = '2013-12-10 6:10:00';
+    $scope.filterBattlesForm = new AngularForm();
+    $scope.filterBattlesForm.addField('from', 'Start', placeholder = exampleDateTime);
+    $scope.filterBattlesForm.addField('to', 'End', laceholder = exampleDateTime);
+    $scope.filterBattles = function($event, start, end) {
+      if (start == null) {
+        start = '';
+      }
+      if (end == null) {
+        end = '';
+      }
+      console.info('filterPlayers', $event, start, end, $scope.filterBattlesForm.fields);
+      getBattles();
+      return $event.preventDefault();
+    };
     getBattles = function() {
-      return $scope.battleList = battleApi.getList().then(function(response) {
+      var data;
+      $scope.filterBattlesForm.submitting = true;
+      data = {};
+      if ($scope.filterBattlesForm.fields.from.value && $scope.filterBattlesForm.fields.from.value.length > 0) {
+        data.start__gte = $scope.filterBattlesForm.fields.from.value;
+      }
+      if ($scope.filterBattlesForm.fields.to.value && $scope.filterBattlesForm.fields.to.value.length > 0) {
+        data.end__lte = $scope.filterBattlesForm.fields.to.value;
+      }
+      console.info('data', $scope.nicknameFilter, data);
+      return $scope.battleList = battleApi.getList(data).then(function(response) {
+        $scope.filterBattlesForm.valid = true;
+        $scope.filterBattlesForm.submitting = false;
         return $scope.battles = response['objects'];
+      }, function(response) {
+        $scope.filterBattlesForm.valid = false;
+        $scope.filterBattlesForm.submitting = false;
+        console.info('response.error', response);
+        return $scope.filterBattlesForm.errors = response.data.error;
       });
     };
-    exampleDateTime = '2013-12-10 6:10:00';
     $scope.newBattleForm = new AngularForm('.new.battle.modal');
     $scope.newBattleForm.addField('attacker', 'Attacker');
     $scope.newBattleForm.addField('defender', 'Defender');

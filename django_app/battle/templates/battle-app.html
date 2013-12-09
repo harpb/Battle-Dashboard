@@ -50,14 +50,36 @@
                     <i class="add icon"></i> NEW
                 </a>
 
-                <div class="ui action input float-right">
-                    <input placeholder="Start Datetime" type="text">
-                    <input placeholder="End Datetime" type="text">
-
-                    <div class="ui button">Filter</div>
-                </div>
             </div>
         </div>
+        <form class="ui form segment"
+              ng-class="{loading: filterBattlesForm.submitting, error: !filterBattlesForm.valid}"
+              ng-submit="filterBattles($event)">
+            <div class="ui error message">
+                <ul class="list">
+                    <li ng-repeat="error in filterBattlesForm.errors"><< error >></li>
+                </ul>
+            </div>
+            <div class="three fields">
+                <div class="field"
+                     ng-repeat="(field_key, field) in filterBattlesForm.fields"
+                     ng-class="{error: !field.valid}"
+                        >
+                    <label><< field.label >></label>
+                    <input type="text"
+                           name="<< field.field_name >>"
+                           placeholder="<< field.placeholder >>"
+                           ng-model="field.value">
+                    <div class="ui red pointing above ui label" ng-if="!field.valid">
+                        <p ng-repeat="error in field.errors"><< error >></p>
+                    </div>
+                </div>
+                <div class="field">
+                    <br/>
+                    <button type="submit" class="ui fluid icon button">Filter</button>
+                </div>
+            </div>
+        </form>
         <table class="ui table">
             <thead>
             <tr>
@@ -83,7 +105,7 @@
             <tfoot>
             <tr>
                 <th colspan="4">
-                    << battle.length >> Battles
+                    << battles.length >> Battles
                 </th>
             </tr>
             </tfoot>
@@ -158,13 +180,15 @@
                 </a>
                 <a class="item blue labeled icon button" ng-click="newPlayerForm.toggleDom()">
                     <i class="add icon"></i> NEW
+                    << nicknameFilter >>
                 </a>
 
-                <div class="ui action input float-right">
-                    <input placeholder="Nickname..." type="text">
-
-                    <div class="ui button">Filter</div>
-                </div>
+                <form class="ui action input float-right loading"
+                      ng-submit="filterPlayers($event, nicknameFilter)"
+                      ng-class="{loading:filterPlayersForm.submitting}">
+                    <input placeholder="Nickname..." type="text" ng-model="nicknameFilter" />
+                    <div type="submit" class="ui icon button">Filter</div>
+                </form>
             </div>
         </div>
         <table class="ui table">
