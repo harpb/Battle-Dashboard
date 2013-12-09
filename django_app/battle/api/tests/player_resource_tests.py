@@ -26,7 +26,7 @@ class TestPlayerResource(HarpTestCase):
             'nickname': 'harmony'
         }
         # CALL
-        resp = self.api_post(data, authenticated = True)
+        resp = self.api_post(data = data, authenticated = True)
         # ASSERT
 #         print resp.content
         self.assertHttpCreated(resp)
@@ -38,7 +38,7 @@ class TestPlayerResource(HarpTestCase):
             'nickname': ''
         }
         # CALL
-        resp = self.api_post(data, authenticated = True)
+        resp = self.api_post(data = data, authenticated = True)
         # ASSERT
         self.assertHttpBadRequest(resp)
         self.assertValidJSON(resp.content)
@@ -49,15 +49,42 @@ class TestPlayerResource(HarpTestCase):
             'nickname': 'harp'
         }
         # CALL
-        resp = self.api_post(data, authenticated = True)
+        resp = self.api_post(data = data, authenticated = True)
         # ASSERT
+        self.assertHttpBadRequest(resp)
+        self.assertValidJSON(resp.content)
+
+    #===========================================================================
+    # update_nickname
+    #===========================================================================
+    def test_update_nickname(self):
+        # SETUP
+        data = {
+            'nickname': 'harpsie'
+        }
+        # CALL
+        resp = self.api_patch(oid = 2, data = data, authenticated = True)
+        # ASSERT
+        print resp.content
+        self.assertHttpAccepted(resp)
+        self.assertValidJSON(resp.content)
+
+    def test_update_nickname_fail(self):
+        # SETUP
+        data = {
+            'nickname': 'harp'
+        }
+        # CALL
+        resp = self.api_patch(oid = 2, data = data, authenticated = True)
+        # ASSERT
+#         print resp.content
         self.assertHttpBadRequest(resp)
         self.assertValidJSON(resp.content)
 
 
 if __name__ == "__main__":
     test_methods = []
-    test_methods = ['test_post_nickname_taken']
+    test_methods = ['test_update_nickname_fail']
     module_name = 'battle.api.tests.player_resource_tests'
     HarpTestCase.run_tests(
             module_name,

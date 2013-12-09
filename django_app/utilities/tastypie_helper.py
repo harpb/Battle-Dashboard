@@ -21,7 +21,7 @@ class KixeyeResource(ModelResource):
         authorization = Authorization()
         serializer = Serializer(formats = ['json'])
         list_allowed_methods = ['get', 'post']
-        detail_allowed_methods = ['get', 'put']
+        detail_allowed_methods = ['get', 'patch']
         max_limit = 100
         limit = max_limit
 

@@ -82,39 +82,45 @@ class HarpTestCase(ResourceTestCase):
     def get_credentials(self):
         return self.create_basic(username = self.username, password = self.password)
 
-    def tastypie_client(self, client_method, data = {}, authenticated = False):
+    def tastypie_client(self, client_method, oid = None, data = {}, authenticated = False):
+        url = self.PATH
+        if oid:
+            if url[-1] != '/':
+                url += '/'
+            url += '%s/' % oid
+        print 'url: %r' % url
         if authenticated:
             http_response = client_method(
-                self.PATH, data = data, format = 'json', authentication=self.get_credentials()
+                url, data = data, format = 'json', authentication=self.get_credentials()
             )
         else:
             http_response = client_method(
-                self.PATH, data = data, format = 'json'
+                url, data = data, format = 'json'
             )
-#         if authenticated:
-#             self.client.logout()
-
-#         if http_response.content is '':
-#             return {}, http_response.status_code
-#         try:
-#             response_json = json.loads(http_response.content)
-#         except ValueError:
-#             raise Exception("INVALID JSON: %r" % http_response.content)
-#         return response_json, http_response.status_code
         return http_response
 
-    def api_get(self, data = {}, authenticated = False):
+    def api_get(self, oid = None, data = {}, authenticated = False):
         callback = self.tastypie_client(
             self.api_client.get,
+            oid = oid,
             data = data,
             authenticated = authenticated
         )
         return callback
 
-    def api_post(self, data = {}, authenticated = False):
-#         data = json.dumps(data)
+    def api_post(self, oid = None, data = {}, authenticated = False):
         callback = self.tastypie_client(
             self.api_client.post,
+            oid = oid,
+            data = data,
+            authenticated = authenticated
+        )
+        return callback
+
+    def api_patch(self, oid = None, data = {}, authenticated = False):
+        callback = self.tastypie_client(
+            self.api_client.patch,
+            oid = oid,
             data = data,
             authenticated = authenticated
         )

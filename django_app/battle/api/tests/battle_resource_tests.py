@@ -41,7 +41,7 @@ class TestBattleResource(HarpTestCase):
             'end': '2006-10-25 14:30:20'
         }
         # CALL
-        resp = self.api_post(data, authenticated = True)
+        resp = self.api_post(data = data, authenticated = True)
         # ASSERT
 #         print resp.content
         self.assertHttpCreated(resp)
@@ -57,7 +57,7 @@ class TestBattleResource(HarpTestCase):
             'end': '2013-01-01 12:25 AM'
         }
         # CALL
-        resp = self.api_post(data, authenticated = True)
+        resp = self.api_post(data = data, authenticated = True)
         # ASSERT
         print resp.content
         self.assertHttpBadRequest(resp)
@@ -68,7 +68,7 @@ class TestBattleResource(HarpTestCase):
         data = {
         }
         # CALL
-        resp = self.api_post(data, authenticated = True)
+        resp = self.api_post(data = data, authenticated = True)
         # ASSERT
         print resp.content
         self.assertHttpBadRequest(resp)
