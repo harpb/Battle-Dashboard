@@ -21,30 +21,31 @@ BattleController = ($scope, Restangular, Auth) ->
         $scope.authentication_credentials.isAuthenticated = true
         getBattles()
         getPlayers()
+#        $scope.newPlayerFormToggle()
 
     # API Endpoints
     playerApi = Restangular.all("player/")
     battleApi = Restangular.all("battle/")
 
-    # Players
+    ########################################################
+    # Player
+    ########################################################
     getPlayers = ->
         $scope.playerList = playerApi.getList().then((response)->
             $scope.players = response['objects']
             console.info('players', $scope.players, $scope.playerList)
         )
 
-    $scope.playerPayload =
-        first_name: ''
-        last_name: ''
-        nickname: ''
+    $scope.newPlayerForm = new AngularForm('.new.player.modal')
+    $scope.newPlayerForm.addField('nickname', 'Nickname')
+    $scope.newPlayerForm.addField('first_name', 'First Name')
+    $scope.newPlayerForm.addField('last_name', 'Last Name')
 
-    $scope.savePlayer = () ->
-        $scope.playerPayload.loading = true
-        playerApi.post($scope.playerPayload).then((response)->
-            $scope.playerPayload.loading = false
-            $scope.players.push(response)
-            $scope.resetNewPlayerForm()
-        )
+    $scope.newPlayerFormToggle = ->
+        $scope.newPlayerForm.toggleDom()
+    $scope.savePlayer = ($event) ->
+        $event.preventDefault()
+        $scope.newPlayerForm.submit(playerApi, $scope.players)
 
     $scope.editPlayer = (player)->
         player.editing = true
@@ -53,22 +54,6 @@ BattleController = ($scope, Restangular, Auth) ->
         player.editing = false
 #        $scope.playerList.put(player)
 #        playerApi.put(player)
-
-    $scope.newPlayerForm = ->
-        $('.new.player.modal')
-        .modal('setting',
-                'transition': 'horizontal flip'
-                onApprove: ->
-                    return false
-            )
-        .modal('toggle')
-
-    $scope.resetNewPlayerForm = ->
-        $scope.playerPayload =
-            first_name: ''
-            last_name: ''
-            nickname: ''
-        $scope.newPlayerForm()
 
     # Battles
     getBattles = ->

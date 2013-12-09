@@ -3,10 +3,12 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/django_app/battle/static/battle/battle.js" />
+        <item url="file://$PROJECT_DIR$/django_app/battle/static/battle/angular_form.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/django_app/battle/static/battle/battle.js" />
+      <root url="file://$PROJECT_DIR$/django_app/battle/static/battle/angular_form.js" />
     </CLASSES>
     <SOURCES />
   </library>

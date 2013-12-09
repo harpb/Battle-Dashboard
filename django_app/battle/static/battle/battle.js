@@ -23,40 +23,22 @@
         return console.info('players', $scope.players, $scope.playerList);
       });
     };
-    $scope.playerPayload = {
-      first_name: '',
-      last_name: '',
-      nickname: ''
+    $scope.newPlayerForm = new AngularForm('.new.player.modal');
+    $scope.newPlayerForm.addField('nickname', 'Nickname');
+    $scope.newPlayerForm.addField('first_name', 'First Name');
+    $scope.newPlayerForm.addField('last_name', 'Last Name');
+    $scope.newPlayerFormToggle = function() {
+      return $scope.newPlayerForm.toggleDom();
     };
-    $scope.savePlayer = function() {
-      $scope.playerPayload.loading = true;
-      return playerApi.post($scope.playerPayload).then(function(response) {
-        $scope.playerPayload.loading = false;
-        $scope.players.push(response);
-        return $scope.resetNewPlayerForm();
-      });
+    $scope.savePlayer = function($event) {
+      $event.preventDefault();
+      return $scope.newPlayerForm.submit(playerApi, $scope.players);
     };
     $scope.editPlayer = function(player) {
       return player.editing = true;
     };
     $scope.updatePlayer = function(player) {
       return player.editing = false;
-    };
-    $scope.newPlayerForm = function() {
-      return $('.new.player.modal').modal('setting', {
-        'transition': 'horizontal flip',
-        onApprove: function() {
-          return false;
-        }
-      }).modal('toggle');
-    };
-    $scope.resetNewPlayerForm = function() {
-      $scope.playerPayload = {
-        first_name: '',
-        last_name: '',
-        nickname: ''
-      };
-      return $scope.newPlayerForm();
     };
     getBattles = function() {
       return $scope.battleList = battleApi.getList().then(function(response) {
