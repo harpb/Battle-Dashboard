@@ -3,7 +3,9 @@
   var AngularForm;
 
   AngularForm = (function() {
-    AngularForm.prototype.fields = {};
+    AngularForm.prototype._id = 1;
+
+    AngularForm.prototype.fields = null;
 
     AngularForm.prototype.enabled = false;
 
@@ -15,6 +17,7 @@
 
     function AngularForm(selector) {
       this.selector = selector;
+      this.fields = {};
     }
 
     AngularForm.prototype.closeDom = function() {
@@ -22,17 +25,21 @@
       return this.toggleDom();
     };
 
-    AngularForm.prototype.addField = function(field_key, label, default_value) {
-      if (default_value == null) {
-        default_value = null;
+    AngularForm.prototype.addField = function(field_key, label, placeholder, defaultValue) {
+      if (placeholder == null) {
+        placeholder = null;
+      }
+      if (defaultValue == null) {
+        defaultValue = null;
       }
       return this.fields[field_key] = {
-        default_value: default_value,
+        defaultValue: defaultValue,
         errors: [],
+        id: this._id++,
         label: label,
-        placeholder: null,
+        placeholder: placeholder,
         valid: true,
-        value: ''
+        value: defaultValue
       };
     };
 
@@ -57,23 +64,27 @@
         field = _ref[field_key];
         field.errors = [];
         field.valid = true;
-        _results.push(field.value = field.default_value || '');
+        _results.push(field.value = field.defaultValue || '');
       }
       return _results;
     };
 
     AngularForm.prototype.setErrors = function(errors) {
-      var field_name, formField, _results;
+      var field, field_name, _ref;
       this.valid = false;
       this.submitting = false;
-      _results = [];
-      for (field_name in errors) {
-        errors = errors[field_name];
-        formField = this.fields[field_name];
-        formField.valid = false;
-        _results.push(formField.errors = errors);
+      console.info('setErrors @fields', this.fields);
+      _ref = this.fields;
+      for (field_name in _ref) {
+        field = _ref[field_name];
+        if (errors[field_name]) {
+          field.valid = false;
+          field.errors = errors[field_name];
+        } else {
+          field.valid = true;
+          field.errors = [];
+        }
       }
-      return _results;
     };
 
     AngularForm.prototype.submit = function(apiEndpoint, scopeObject) {

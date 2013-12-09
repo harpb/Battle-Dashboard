@@ -41,8 +41,6 @@ BattleController = ($scope, Restangular, Auth) ->
     $scope.newPlayerForm.addField('first_name', 'First Name')
     $scope.newPlayerForm.addField('last_name', 'Last Name')
 
-    $scope.newPlayerFormToggle = ->
-        $scope.newPlayerForm.toggleDom()
     $scope.savePlayer = ($event) ->
         $event.preventDefault()
         $scope.newPlayerForm.submit(playerApi, $scope.players)
@@ -61,44 +59,46 @@ BattleController = ($scope, Restangular, Auth) ->
             $scope.battles = response['objects']
         )
 
-    $scope.newBattleForm = ->
-        $('.new.battle.modal')
-        .modal('setting',
-                'transition': 'horizontal flip'
-                onApprove: ->
-                    return false
-            )
-        .modal('toggle')
-
-    $scope.resetNewBattleForm = ->
-        $scope.battlePayload =
-            attacker: null
-            defender: null
-            attacker_wins: false
-            start: currentDate.toISOString()
-            end: currentDate.toISOString()
-        $scope.newBattleForm()
-
-    currentDate = new Date()
-    $scope.battlePayload =
-        attacker: null
-        defender: null
-        attacker_wins: false
-        start: currentDate.toISOString()
-        end: currentDate.toISOString()
-
-    $scope.saveBattle = () ->
-        $scope.battlePayload.loading = true
-        if $scope.battlePayload.attacker_wins
-            $scope.battlePayload.winner = $scope.battlePayload.attacker
-        else
-            $scope.battlePayload.winner = $scope.battlePayload.defender
-
-        battleApi.post($scope.battlePayload).then((response)->
-            $scope.battlePayload.loading = false
-            $scope.battles.push(response)
-            $scope.resetNewBattleForm()
-        )
+    exampleDateTime = '2013-12-10 6:10:00'
+    $scope.newBattleForm = new AngularForm('.new.battle.modal')
+    $scope.newBattleForm.addField('attacker', 'Attacker')
+    $scope.newBattleForm.addField('defender', 'Defender')
+    $scope.newBattleForm.addField('winner', 'Winner')
+    $scope.newBattleForm.addField('start', 'Start', placeholder = exampleDateTime)
+    $scope.newBattleForm.addField('end', 'End',
+        placeholder = exampleDateTime, defaultValue = exampleDateTime)
+    $scope.battlePlayerFields = [
+        $scope.newBattleForm.fields.attacker
+        $scope.newBattleForm.fields.defender
+    ]
+    $scope.battleDatetimeFields = [
+        $scope.newBattleForm.fields.start
+        $scope.newBattleForm.fields.end
+    ]
+    $scope.saveBattle = ($event) ->
+        $event.preventDefault()
+        $scope.newBattleForm.submit(battleApi, $scope.battles)
+#
+#    currentDate = new Date()
+#    $scope.battlePayload =
+#        attacker: null
+#        defender: null
+#        attacker_wins: false
+#        start: currentDate.toISOString()
+#        end: currentDate.toISOString()
+#
+#    $scope.saveBattle = () ->
+#        $scope.battlePayload.loading = true
+#        if $scope.battlePayload.attacker_wins
+#            $scope.battlePayload.winner = $scope.battlePayload.attacker
+#        else
+#            $scope.battlePayload.winner = $scope.battlePayload.defender
+#
+#        battleApi.post($scope.battlePayload).then((response)->
+#            $scope.battlePayload.loading = false
+#            $scope.battles.push(response)
+#            $scope.resetNewBattleForm()
+#        )
 
     # Ready
     $scope.login()

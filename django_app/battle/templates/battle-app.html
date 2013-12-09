@@ -46,7 +46,7 @@
                     <i class="users icon"></i>
                     Battles
                 </a>
-                <a class="item blue labeled icon button" ng-click="newBattleForm()">
+                <a class="item blue labeled icon button" ng-click="newBattleForm.toggleDom()">
                     <i class="add icon"></i> NEW
                 </a>
 
@@ -89,47 +89,64 @@
             </tfoot>
         </table>
 
-        <div class="ui new battle small modal">
+        <form class="ui new battle small modal"
+              ng-submit="saveBattle($event)">
             <i class="close icon"></i>
 
             <div class="header">
                 New Battle
             </div>
             <div class="content">
-                <div class="ui form" ng-class="{loading: battlePayload.loading}">
-
+                <div class="ui form" ng-class="{loading: newBattleForm.submitting}">
                     <div class="two fields">
-                        <div class="field">
-                            <label>Attacker ID</label>
-                            <input type="text" ng-model="battlePayload.attacker">
-                        </div>
-                        <div class="field">
-                            <label>Defender ID</label>
-                            <input type="text" ng-model="battlePayload.defender">
+                        <div class="field"
+                             ng-repeat="field in battlePlayerFields"
+                             ng-class="{error: !field.valid}"
+                                >
+                            <label><< field.label >></label>
+                            <input type="number"
+                                   name="<< field.field_name >>"
+                                   placeholder="<< field.placeholder >>"
+                                   ng-model="field.value">
+                            <div class="ui red pointing above ui label" ng-if="!field.valid">
+                                <p ng-repeat="error in field.errors"><< error >></p>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="two fields">
-                        <div class="field">
-                            <label>Start Datetime</label>
-                            <input type="text" ng-model="battlePayload.start">
-                        </div>
-                        <div class="field">
-                            <label>End Datetime</label>
-                            <input type="text" ng-model="battlePayload.end">
+                    <div class="field"
+                         ng-class="{error: newBattleForm.fields.winner.valid}"
+                            >
+                        <label><< newBattleForm.fields.winner.label >></label>
+                        <select ng-model="newBattleForm.fields.winner.value">
+                            <option value="<< newBattleForm.fields.attacker.value >>" selected="true">Attacker</option>
+                            <option value="<< newBattleForm.fields.defender.value >>">Defender</option>
+                        </select>
+                        <div class="ui red pointing left ui label" ng-if="!newBattleForm.fields.winner.valid">
+                            <p ng-repeat="error in newBattleForm.fields.winner.errors"><< error >></p>
                         </div>
                     </div>
-                    <div class="inline field">
-                        <input class="ui checkbox" type="checkbox" ng-model="battlePayload.attacker_wins">
-                        <label>Attacker Wins?</label>
+                    <div class="two fields">
+                        <div class="field"
+                             ng-repeat="field in battleDatetimeFields"
+                             ng-class="{error: !field.valid}"
+                                >
+                            <label><< field.label >></label>
+                            <input type="text"
+                                   name="<< field.field_name >>"
+                                   placeholder="<< field.placeholder >>"
+                                   ng-model="field.value">
+                            <div class="ui red pointing above ui label" ng-if="!field.valid">
+                                <p ng-repeat="error in field.errors"><< error >></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="actions">
-                <div class="ui button" ng-click="resetNewBattleForm()">Cancel</div>
-                <div class="ui positive button" ng-click="saveBattle()">Create</div>
+                <button type="reset" class="ui button" ng-click="newBattleForm.closeDom()">Cancel</button>
+                <button type="submit" class="ui positive button">Create</button>
             </div>
-        </div>
+        </form>
     </div>
 
     <div class="ten wide column">
@@ -139,7 +156,7 @@
                     <i class="users icon"></i>
                     Players
                 </a>
-                <a class="item blue labeled icon button" ng-click="newPlayerFormToggle()">
+                <a class="item blue labeled icon button" ng-click="newPlayerForm.toggleDom()">
                     <i class="add icon"></i> NEW
                 </a>
 
@@ -210,7 +227,7 @@
             </tfoot>
         </table>
 
-        <form class="ui new player small modal" ng-submit="savePlayer($event)" ng-class="{active: newPlayerForm.enabled}">
+        <form class="ui new player small modal" ng-submit="savePlayer($event)">
             <i class="close icon"></i>
 
             <div class="header">

@@ -1,5 +1,6 @@
 class AngularForm
-    fields: {}
+    _id: 1
+    fields: null
     enabled: false
     selector: null
     submitting: false
@@ -7,19 +8,21 @@ class AngularForm
 
     constructor: (selector)->
         @selector = selector
+        @fields = {}
 
     closeDom: ->
         @reset()
         @toggleDom()
 
-    addField: (field_key, label, default_value = null)->
+    addField: (field_key, label, placeholder = null, defaultValue = null)->
         @fields[field_key] =
-            default_value: default_value
+            defaultValue: defaultValue
             errors: []
+            id: @_id++
             label: label
-            placeholder: null
+            placeholder: placeholder
             valid: true
-            value: ''
+            value: defaultValue
 
     payload: ->
         payload = {}
@@ -34,14 +37,20 @@ class AngularForm
         for field_key, field of @fields
             field.errors = []
             field.valid = true
-            field.value = field.default_value or ''
+            field.value = field.defaultValue or ''
+
     setErrors: (errors)->
         @valid = false
         @submitting = false
-        for field_name, errors of errors
-            formField = @fields[field_name]
-            formField.valid = false
-            formField.errors = errors
+        console.info('setErrors @fields', @fields)
+        for field_name, field of @fields
+            if errors[field_name]
+                field.valid = false
+                field.errors = errors[field_name]
+            else
+                field.valid = true
+                field.errors = []
+        return
 
     submit: (apiEndpoint, scopeObject = null)->
         self = @

@@ -3,7 +3,7 @@
   var BattleApp, BattleController;
 
   BattleController = function($scope, Restangular, Auth) {
-    var battleApi, currentDate, getBattles, getPlayers, playerApi;
+    var battleApi, defaultValue, exampleDateTime, getBattles, getPlayers, placeholder, playerApi;
     $scope.authentication_credentials = {
       username: 'harp',
       password: 'great',
@@ -27,9 +27,6 @@
     $scope.newPlayerForm.addField('nickname', 'Nickname');
     $scope.newPlayerForm.addField('first_name', 'First Name');
     $scope.newPlayerForm.addField('last_name', 'Last Name');
-    $scope.newPlayerFormToggle = function() {
-      return $scope.newPlayerForm.toggleDom();
-    };
     $scope.savePlayer = function($event) {
       $event.preventDefault();
       return $scope.newPlayerForm.submit(playerApi, $scope.players);
@@ -45,44 +42,18 @@
         return $scope.battles = response['objects'];
       });
     };
-    $scope.newBattleForm = function() {
-      return $('.new.battle.modal').modal('setting', {
-        'transition': 'horizontal flip',
-        onApprove: function() {
-          return false;
-        }
-      }).modal('toggle');
-    };
-    $scope.resetNewBattleForm = function() {
-      $scope.battlePayload = {
-        attacker: null,
-        defender: null,
-        attacker_wins: false,
-        start: currentDate.toISOString(),
-        end: currentDate.toISOString()
-      };
-      return $scope.newBattleForm();
-    };
-    currentDate = new Date();
-    $scope.battlePayload = {
-      attacker: null,
-      defender: null,
-      attacker_wins: false,
-      start: currentDate.toISOString(),
-      end: currentDate.toISOString()
-    };
-    $scope.saveBattle = function() {
-      $scope.battlePayload.loading = true;
-      if ($scope.battlePayload.attacker_wins) {
-        $scope.battlePayload.winner = $scope.battlePayload.attacker;
-      } else {
-        $scope.battlePayload.winner = $scope.battlePayload.defender;
-      }
-      return battleApi.post($scope.battlePayload).then(function(response) {
-        $scope.battlePayload.loading = false;
-        $scope.battles.push(response);
-        return $scope.resetNewBattleForm();
-      });
+    exampleDateTime = '2013-12-10 6:10:00';
+    $scope.newBattleForm = new AngularForm('.new.battle.modal');
+    $scope.newBattleForm.addField('attacker', 'Attacker');
+    $scope.newBattleForm.addField('defender', 'Defender');
+    $scope.newBattleForm.addField('winner', 'Winner');
+    $scope.newBattleForm.addField('start', 'Start', placeholder = exampleDateTime);
+    $scope.newBattleForm.addField('end', 'End', placeholder = exampleDateTime, defaultValue = exampleDateTime);
+    $scope.battlePlayerFields = [$scope.newBattleForm.fields.attacker, $scope.newBattleForm.fields.defender];
+    $scope.battleDatetimeFields = [$scope.newBattleForm.fields.start, $scope.newBattleForm.fields.end];
+    $scope.saveBattle = function($event) {
+      $event.preventDefault();
+      return $scope.newBattleForm.submit(battleApi, $scope.battles);
     };
     return $scope.login();
   };
