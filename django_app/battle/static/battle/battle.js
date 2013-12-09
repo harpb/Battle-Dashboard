@@ -6,7 +6,7 @@
     var battleApi, defaultValue, exampleDateTime, getBattles, getPlayers, laceholder, placeholder, playerApi;
     $scope.authentication_credentials = {
       username: 'harp',
-      password: 'great',
+      password: 'greatsolution',
       isAuthenticated: false
     };
     $scope.login = function() {

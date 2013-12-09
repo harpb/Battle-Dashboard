@@ -4,7 +4,7 @@
 
 # EXTENSIONS
 *.pyc
-*.sqlite
+# *.sqlite
 *.tar.gz
 
 # TEMPORARY FILES

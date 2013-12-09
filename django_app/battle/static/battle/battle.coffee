@@ -10,7 +10,7 @@ BattleController = ($scope, Restangular, Auth) ->
     ########################################################
     $scope.authentication_credentials = {
         username: 'harp'
-        password: 'great'
+        password: 'greatsolution'
         isAuthenticated: false
     }
     $scope.login = ->

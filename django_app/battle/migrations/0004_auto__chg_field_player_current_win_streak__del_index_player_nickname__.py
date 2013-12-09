@@ -3,6 +3,7 @@ import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from django.db.utils import OperationalError
 
 
 class Migration(SchemaMigration):
@@ -12,8 +13,11 @@ class Migration(SchemaMigration):
         # Changing field 'Player.current_win_streak'
         db.alter_column(u'battle_player', 'current_win_streak', self.gf('django.db.models.fields.IntegerField')())
 
-        # Removing index on 'Player', fields ['nickname']
-        db.delete_index(u'battle_player', ['nickname'])
+        try:
+            # Removing index on 'Player', fields ['nickname']
+            db.delete_index(u'battle_player', ['nickname'])
+        except OperationalError:
+            pass
 
         # Adding unique constraint on 'Player', fields ['nickname']
         db.create_unique(u'battle_player', ['nickname'])
