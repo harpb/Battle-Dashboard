@@ -34,7 +34,7 @@
       $scope.filterPlayersForm.submitting = true;
       data = {};
       if ($scope.nicknameFilter.length > 0) {
-        data.nickname = $scope.nicknameFilter;
+        data.nickname__contains = $scope.nicknameFilter;
       }
       console.info('data', $scope.nicknameFilter, data);
       return $scope.playerList = playerApi.getList(data).then(function(response) {

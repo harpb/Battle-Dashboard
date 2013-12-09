@@ -43,7 +43,7 @@ BattleController = ($scope, Restangular, Auth) ->
         $scope.filterPlayersForm.submitting = true
         data = {}
         if $scope.nicknameFilter.length > 0
-            data.nickname = $scope.nicknameFilter
+            data.nickname__contains = $scope.nicknameFilter
         console.info('data', $scope.nicknameFilter, data)
 
         $scope.playerList = playerApi.getList(data).then((response)->
