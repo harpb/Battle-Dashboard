@@ -112,7 +112,7 @@ class HarpTestCase(ResourceTestCase):
         return callback
 
     def api_post(self, data = {}, authenticated = False):
-        data = json.dumps(data)
+#         data = json.dumps(data)
         callback = self.tastypie_client(
             self.api_client.post,
             data = data,

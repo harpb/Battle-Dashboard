@@ -54,7 +54,7 @@ class BattleForm(forms.ModelForm):
         """
         start = self.cleaned_data.get('start')
         end = self.cleaned_data.get('end')
-        if start > end:
+        if start and end and start > end:
             raise forms.ValidationError(self.END_IS_BEFORE_START)
 
         return end

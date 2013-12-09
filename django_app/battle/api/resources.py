@@ -1,20 +1,8 @@
 from battle.models import Player, Battle
 from tastypie import fields
-from tastypie.resources import ModelResource
-from tastypie.serializers import Serializer
-from tastypie.authentication import BasicAuthentication
 from tastypie.constants import ALL
-from tastypie.authorization import Authorization
-
-class KixeyeResource(ModelResource):
-    class Meta:
-        always_return_data = True
-        # Add it here.
-        authentication = BasicAuthentication()
-        authorization = Authorization()
-        serializer = Serializer(formats = ['json'])
-        list_allowed_methods = ['get', 'post']
-        detail_allowed_methods = ['get', 'put']
+from battle.forms import PlayerForm, BattleForm
+from utilities.tastypie_helper import FormSaveValidation, KixeyeResource
 
 class PlayerResource(KixeyeResource):
     class Meta(KixeyeResource.Meta):
@@ -23,6 +11,7 @@ class PlayerResource(KixeyeResource):
         filtering = {
             'nickname': ALL
         }
+        validation = FormSaveValidation(form_class = PlayerForm)
 
 class BattleResource(KixeyeResource):
     attacker = fields.ForeignKey(PlayerResource, 'attacker', full = True)
@@ -36,3 +25,4 @@ class BattleResource(KixeyeResource):
             'start': ALL,
             'end': ALL
         }
+        validation = FormSaveValidation(form_class = BattleForm)
