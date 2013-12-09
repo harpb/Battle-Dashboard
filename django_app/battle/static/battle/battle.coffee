@@ -31,7 +31,7 @@ BattleController = ($scope, Restangular, Auth) ->
     ########################################################
     # Player
     ########################################################
-    $scope.nicknameFilter = 'harp'
+    $scope.nicknameFilter = ''
     $scope.filterPlayersForm = new AngularForm()
     $scope.filterPlayers = ($event, text = '')->
         $scope.nicknameFilter = text

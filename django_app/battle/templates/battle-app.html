@@ -17,8 +17,8 @@
 {% block body %}
 <body class="fill-height fluid container" ng-controller="BattleController" ng-app="BattleApp">
 <div class="ui no-margin menu">
-    <a class="active item" href="">
-        <i class="home icon"></i> HarpB
+    <a class="active item" href="/">
+        <i class="home icon"></i> Battle Dashboard
     </a>
 
     <div class="ui basic form right item no-padding">
@@ -208,7 +208,11 @@
             <tr ng-repeat="player in players | orderBy: 'id'"
                 ng-dblclick="editPlayer(player)"
                 ng-switch="player.editing">
-                <td ng-switch-default><< player.nickname >></td>
+                <td ng-switch-default>
+                    <a href="/player/<< player.id >>/">
+                        << player.nickname >>
+                    </a>
+                </td>
                 <td ng-switch-default><< player.first_name >></td>
                 <td ng-switch-default><< player.last_name >></td>
 

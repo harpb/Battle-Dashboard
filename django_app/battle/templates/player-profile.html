@@ -1,0 +1,113 @@
+{% extends "semantic-ui-base.html" %}
+
+{% block extra-css %}
+<link rel="stylesheet" href="/static/battle/battle.css"/>
+{%endblock%}
+
+{% block body %}
+<body class="fill-height fluid container" ng-controller="BattleController" ng-app="BattleApp">
+<div class="ui no-margin menu">
+    <a class="item" href="/">
+        <i class="home icon"></i> Battle Dashboard
+    </a>
+</div>
+
+<div class="grid ui" >
+    <div class="six wide column">
+        <div class="ui menu no-margin">
+            <div class="menu">
+                <a class="active item">
+                    <i class="users icon"></i>
+                    {{ player.nickname }}
+                </a>
+            </div>
+        </div>
+        <div class="ui very relaxed divided list">
+            <div class="item">
+                <div class="content">
+                    <span class="header">First Name </span>
+                    <div class="description">{{ player.first_name }}</div>
+                </div>
+                <div class="content">
+                    <span class="header">Last Name</span>
+                    <div class="description">{{ player.last_name }}</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="content">
+                    <span class="header">Wins</span>
+                    <div class="description">{{ player.wins }}</div>
+                </div>
+                <div class="content">
+                    <span class="header">Losses</span>
+                    <div class="description">{{ player.losses }}</div>
+                </div>
+                <div class="content">
+                    <span class="header">Win Streak</span>
+                    <div class="description">{{ player.current_win_streak }}</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="content">
+                    <span class="header">Created </span>
+                    <div class="description">{{ player.created }}</div>
+                </div>
+                <div class="content">
+                    <span class="header">Last Seen</span>
+                    <div class="description">{{ player.last_seen }}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="ten wide column">
+        <div class="ui menu no-margin">
+            <div class="menu">
+                <a class="active item">
+                    <i class="users icon"></i>
+                    Battles
+                </a>
+            </div>
+        </div>
+        <table class="ui table">
+            <thead>
+            <tr>
+                <th>Attacker</th>
+                <th>Defender</th>
+                <th>Start</th>
+                <th>End</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for battle in battles %}
+                <tr ng-repeat="battle in battles | orderBy: 'id'"
+                        >
+                    <td class="{% if battle.winner == battle.attacker %} positive {% endif %}">
+                        {{ battle.attacker.nickname }}
+                        (#{{ battle.attacker.id }})
+                    </td>
+                    <td class="{% if battle.winner == battle.defender %} positive {% endif %}">
+                        {{ battle.defender.nickname }}
+                        (#{{ battle.defender.id }})
+                    </td>
+                    <td>{{ battle.start }}</td>
+                    <td>{{ battle.end }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="4">
+                    {{ battles.count }} Battles
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+
+<footer class="ui tertiary segment center aligned no-margin">
+    ©2013 HarpB
+</footer>
+{% endblock %}

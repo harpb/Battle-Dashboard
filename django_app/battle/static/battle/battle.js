@@ -18,7 +18,7 @@
     };
     playerApi = Restangular.all("player/");
     battleApi = Restangular.all("battle/");
-    $scope.nicknameFilter = 'harp';
+    $scope.nicknameFilter = '';
     $scope.filterPlayersForm = new AngularForm();
     $scope.filterPlayers = function($event, text) {
       if (text == null) {

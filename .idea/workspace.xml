@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d2a8247-f20a-4718-9219-74ef89b3e4b6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/migrations/0004_auto__chg_field_player_current_win_streak__del_index_player_nickname__.py" afterPath="$PROJECT_DIR$/django_app/battle/migrations/0004_auto__chg_field_player_current_win_streak__del_index_player_nickname__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/api/tests/battle_resource_tests.py" afterPath="$PROJECT_DIR$/django_app/battle/api/tests/battle_resource_tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/django_app/environment.py" afterPath="$PROJECT_DIR$/django_app/django_app/environment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/utilities/harp_test_case.py" afterPath="$PROJECT_DIR$/django_app/utilities/harp_test_case.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/api/tests/player_resource_tests.py" afterPath="$PROJECT_DIR$/django_app/battle/api/tests/player_resource_tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/db.sqlite3" afterPath="$PROJECT_DIR$/django_app/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/templates/battle-app.html" afterPath="$PROJECT_DIR$/django_app/battle/templates/battle-app.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee" afterPath="$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/static/battle/battle.js" afterPath="$PROJECT_DIR$/django_app/battle/static/battle/battle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/templates/semantic-ui-base.html" afterPath="$PROJECT_DIR$/django_app/battle/templates/semantic-ui-base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/urls.py" afterPath="$PROJECT_DIR$/django_app/battle/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/views.py" afterPath="$PROJECT_DIR$/django_app/battle/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Kixeye Challenge.iws" />
@@ -30,10 +32,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="battle.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="battle.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="32" selection-start="494" selection-end="494" vertical-scroll-proportion="0.36298934" vertical-offset="0" max-vertical-offset="2397">
+            <state line="33" column="29" selection-start="1159" selection-end="1159" vertical-scroll-proportion="10.88" vertical-offset="1105" max-vertical-offset="2397">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player-profile.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_app/battle/templates/player-profile.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="41" selection-start="631" selection-end="631" vertical-scroll-proportion="-5.576923" vertical-offset="195" max-vertical-offset="2023">
               <folding />
             </state>
           </provider>
@@ -42,7 +53,16 @@
       <file leaf-file-name="battle-app.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_app/battle/templates/battle-app.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="181" column="48" selection-start="7850" selection-end="7850" vertical-scroll-proportion="-118.34615" vertical-offset="0" max-vertical-offset="4947">
+            <state line="213" column="22" selection-start="9067" selection-end="9067" vertical-scroll-proportion="-139.26923" vertical-offset="0" max-vertical-offset="5015">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="semantic-ui-base.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/django_app/battle/templates/semantic-ui-base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="67" selection-start="117" selection-end="117" vertical-scroll-proportion="0.054104477" vertical-offset="22" max-vertical-offset="833">
               <folding />
             </state>
           </provider>
@@ -71,13 +91,14 @@
         <option value="$PROJECT_DIR$/django_app/static/battle/battle.css" />
         <option value="$PROJECT_DIR$/django_app/static/battle/controller.js" />
         <option value="$PROJECT_DIR$/django_app/battle/static/style/defaults.css" />
-        <option value="$PROJECT_DIR$/django_app/battle/templates/semantic-ui-base.html" />
         <option value="$PROJECT_DIR$/django_app/battle/static/battle/base64_service" />
         <option value="$PROJECT_DIR$/django_app/battle/static/battle/base64_service.js" />
         <option value="$PROJECT_DIR$/django_app/battle/static/battle/auth_service.js" />
         <option value="$PROJECT_DIR$/django_app/battle/static/battle/angular_form.coffee" />
-        <option value="$PROJECT_DIR$/django_app/battle/templates/battle-app.html" />
         <option value="$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee" />
+        <option value="$PROJECT_DIR$/django_app/battle/templates/player-profile.html" />
+        <option value="$PROJECT_DIR$/django_app/battle/templates/battle-app.html" />
+        <option value="$PROJECT_DIR$/django_app/battle/templates/semantic-ui-base.html" />
       </list>
     </option>
   </component>
@@ -313,6 +334,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
@@ -374,11 +396,11 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21295607" sideWeight="0.6711111" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21295607" sideWeight="0.6717687" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288889" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282313" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -401,13 +423,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/battle.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/django_app/battle/templates/battle-app.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="82" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1972">
@@ -452,11 +467,6 @@
         <state line="4" column="16" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="2754" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_app/battle/templates/semantic-ui-base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="21" selection-start="109" selection-end="109" vertical-scroll-proportion="0.08018868" vertical-offset="0" max-vertical-offset="848" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/base64_service.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="9" selection-start="0" selection-end="9" vertical-scroll-proportion="-0.7311213" vertical-offset="639" max-vertical-offset="1513" />
@@ -483,16 +493,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_app/battle/templates/battle-app.html">
+    <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="48" selection-start="7850" selection-end="7850" vertical-scroll-proportion="-118.34615" vertical-offset="0" max-vertical-offset="4947">
+        <state line="33" column="29" selection-start="1159" selection-end="1159" vertical-scroll-proportion="10.88" vertical-offset="1105" max-vertical-offset="2397">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee">
+    <entry file="file://$PROJECT_DIR$/django_app/battle/templates/player-profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="32" selection-start="494" selection-end="494" vertical-scroll-proportion="0.36298934" vertical-offset="0" max-vertical-offset="2397">
+        <state line="20" column="41" selection-start="631" selection-end="631" vertical-scroll-proportion="-5.576923" vertical-offset="195" max-vertical-offset="2023">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_app/battle/templates/battle-app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="213" column="22" selection-start="9067" selection-end="9067" vertical-scroll-proportion="-139.26923" vertical-offset="0" max-vertical-offset="5015">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_app/battle/templates/semantic-ui-base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="67" selection-start="117" selection-end="117" vertical-scroll-proportion="0.054104477" vertical-offset="22" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
