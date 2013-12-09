@@ -9,7 +9,10 @@ def set_local():
     pass
 
 def set_test():
-    settings.DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    settings.SOUTH_TESTS_MIGRATE = False 
+    settings.DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3'
+    }
     settings.USE_TZ = True
 
 #===============================================================================

@@ -88,7 +88,7 @@ class HarpTestCase(ResourceTestCase):
             if url[-1] != '/':
                 url += '/'
             url += '%s/' % oid
-        print 'url: %r' % url
+#         print 'url: %r' % url
         if authenticated:
             http_response = client_method(
                 url, data = data, format = 'json', authentication=self.get_credentials()

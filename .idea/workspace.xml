@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d2a8247-f20a-4718-9219-74ef89b3e4b6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/db.sqlite3" afterPath="$PROJECT_DIR$/django_app/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/migrations/0004_auto__chg_field_player_current_win_streak__del_index_player_nickname__.py" afterPath="$PROJECT_DIR$/django_app/battle/migrations/0004_auto__chg_field_player_current_win_streak__del_index_player_nickname__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/templates/battle-app.html" afterPath="$PROJECT_DIR$/django_app/battle/templates/battle-app.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee" afterPath="$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/static/battle/battle.js" afterPath="$PROJECT_DIR$/django_app/battle/static/battle/battle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/django_app/settings.py" afterPath="$PROJECT_DIR$/django_app/django_app/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/api/tests/battle_resource_tests.py" afterPath="$PROJECT_DIR$/django_app/battle/api/tests/battle_resource_tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/django_app/environment.py" afterPath="$PROJECT_DIR$/django_app/django_app/environment.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/utilities/harp_test_case.py" afterPath="$PROJECT_DIR$/django_app/utilities/harp_test_case.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/api/tests/player_resource_tests.py" afterPath="$PROJECT_DIR$/django_app/battle/api/tests/player_resource_tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Kixeye Challenge.iws" />

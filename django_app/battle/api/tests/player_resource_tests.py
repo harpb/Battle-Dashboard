@@ -65,7 +65,7 @@ class TestPlayerResource(HarpTestCase):
         # CALL
         resp = self.api_patch(oid = 2, data = data, authenticated = True)
         # ASSERT
-        print resp.content
+#         print resp.content
         self.assertHttpAccepted(resp)
         self.assertValidJSON(resp.content)
 

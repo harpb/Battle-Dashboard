@@ -59,7 +59,7 @@ class TestBattleResource(HarpTestCase):
         # CALL
         resp = self.api_post(data = data, authenticated = True)
         # ASSERT
-        print resp.content
+#         print resp.content
         self.assertHttpBadRequest(resp)
         self.assertValidJSON(resp.content)
 
@@ -70,7 +70,7 @@ class TestBattleResource(HarpTestCase):
         # CALL
         resp = self.api_post(data = data, authenticated = True)
         # ASSERT
-        print resp.content
+#         print resp.content
         self.assertHttpBadRequest(resp)
         self.assertValidJSON(resp.content)
 
