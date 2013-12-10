@@ -30,7 +30,7 @@ ADMINS = (
      ('Harp B', 'hi@harpb.com'),  # user: harp, password: greatsolution
 )
 INTERNAL_IPS = ('127.0.0.1',)
-ALLOWED_HOSTS = ('.harpb.com')
+ALLOWED_HOSTS = ('battle', '.harpb.com')
 SERVER_ENVIRONMENT = 'LOCAL'
 
 # Application definition
