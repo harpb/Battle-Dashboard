@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d2a8247-f20a-4718-9219-74ef89b3e4b6" name="Default" comment="" />
+    <list default="true" id="2d2a8247-f20a-4718-9219-74ef89b3e4b6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fabfile.py" afterPath="$PROJECT_DIR$/fabfile.py" />
+    </list>
     <ignored path="Kixeye Challenge.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +28,7 @@
       <file leaf-file-name="battle.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="35" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.43164062" vertical-offset="544" max-vertical-offset="2397">
+            <state line="47" column="0" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.54464287" vertical-offset="494" max-vertical-offset="2397">
               <folding />
             </state>
           </provider>
@@ -507,7 +509,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/django_app/battle/static/battle/battle.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="35" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.43164062" vertical-offset="544" max-vertical-offset="2397">
+        <state line="47" column="0" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.54464287" vertical-offset="494" max-vertical-offset="2397">
           <folding />
         </state>
       </provider>

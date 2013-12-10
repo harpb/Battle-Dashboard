@@ -28,7 +28,7 @@ ENVIRONMENTS = {
 for env_name, server_env in ENVIRONMENTS.iteritems():
     server_env['pyenv_path'] = server_env['repo_dir'] + '/pyenv'
     server_env['webapp_path'] = server_env['repo_dir'] + '/django_app'
-    server_env['static_path'] = server_env['webapp_path'] + '/static'
+    server_env['static_path'] = server_env['webapp_path'] + '/battle/static'
     server_env['server_script'] = server_env['webapp_path'] + '/gevent_wsgi_server.py'
 
 #===============================================================================
@@ -109,6 +109,7 @@ def build_pyenv():
     run('apt-get -y upgrade')
     run('apt-get -y dist-upgrade')
     run('apt-get install -y libxml2-dev libxslt-dev python-crypto')
+    run("npm install -g bower")
     pull_changes()
 #    run('pip install lxml')
     with cd(env.settings["repo_dir"]):
@@ -122,8 +123,6 @@ def django_sync():
 
 def npm_install():
     with cd(env.settings["static_path"]):
-        run("npm install")
- 
         run("bower install --allow-root")
 
 def refresh():

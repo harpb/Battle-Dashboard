@@ -6,11 +6,11 @@ import os
 import traceback
 import sys
 from gevent.pywsgi import WSGIServer
+os.environ['DJANGO_SETTINGS_MODULE'] = 'django_app.settings'
 
 from django.core.handlers.wsgi import WSGIHandler
 from django.core.signals import got_request_exception
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'django_app.settings'
 
 def exception_printer(sender, **kwargs):
     traceback.print_exc()
