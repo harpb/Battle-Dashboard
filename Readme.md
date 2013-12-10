@@ -20,7 +20,7 @@ The specification has `POST /users/<userid>` as an API endpoint while `GET /user
 
 All of the api endpoints are available via the `/api/` endpoint. The battle api has versioning. The currently version is 1, so the api endpoint is `/api/v1/`. Rather than `user`, the client is called a `player`. The player api is available via `/api/v1/player/`.
 
-The API is behind BasicAuth, which uses the accounts available in the django user table. An existing users credentials are __`harp:greatsolution`__, example url is: [`http://harp:greatsolution@battle.harpb.com/api/v1/player/`](http://harp:greatsolution@battle.harpb.com/api/v1/player/)
+The API is behind BasicAuth, which uses the accounts available in the django user table. An existing users credentials are `harp:greatsolution`, example url is: [`http://harp:greatsolution@battle.harpb.com/api/v1/player/`](http://harp:greatsolution@battle.harpb.com/api/v1/player/)
 
 1. Battles
     - List: [`/api/v1/battle/`](http://battle.harpb.com/api/v1/battle/)
