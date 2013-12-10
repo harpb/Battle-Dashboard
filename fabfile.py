@@ -17,7 +17,7 @@ ENVIRONMENTS = {
     },
     "local": {
         "default_branch": "master",
-        "repo_dir": "/c/dev",
+        "repo_dir": '',
         "servers": [
             'localhost'
         ],
@@ -37,6 +37,9 @@ for env_name, server_env in ENVIRONMENTS.iteritems():
 def local():
     env.settings = ENVIRONMENTS['local']
     env.hosts = env.settings['servers']
+    if env.settings['repo_dir'] is '':
+        raise Exception('repo_dir must be defined.')
+    
 
 def prod():
     env.settings = ENVIRONMENTS['prod']
@@ -116,6 +119,14 @@ def build_pyenv():
         run("rm -rf ./pyenv/build")
         run("./pyenv/bin/pip install -r pipfile --download-cache=_pip_cache --upgrade --exists-action=s ")
 
+def build_windows_pyenv():
+    pull_changes()
+    run("npm install -g bower")
+#    run('pip install lxml')
+    with cd(env.settings["repo_dir"]):
+        run("rm -rf ./pyenv/build")
+        run("./pyenv/Scripts/pip install -r pipfile --download-cache=_pip_cache --upgrade --exists-action=s ")
+
 def django_sync():
     # UPDATE static files
     django_manage('collectstatic -l --noinput')
@@ -136,6 +147,3 @@ def setup():
     run("git clone git@github.com:harpb/Battle-Dashboard.git %r" % env.settings["repo_dir"])
     with cd(env.settings["repo_dir"]):
         run('virtualenv pyenv --prompt=battle --system-site-packages')
-    build_pyenv()
-    
-    

@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d2a8247-f20a-4718-9219-74ef89b3e4b6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_app/battle/static/style/defaults.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_app/battle/static/style/utilities.less" />
-      <change type="DELETED" beforePath="C:\Users\Harp\Desktop\Dev\Workspaces\Python\Kixeye\django_app\battle\static\battle\battle.less" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/templates/battle-app.html" afterPath="$PROJECT_DIR$/django_app/battle/templates/battle-app.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/static/battle/battle.css" afterPath="$PROJECT_DIR$/django_app/battle/static/battle/battle.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_app/battle/static/style/defaults.css" afterPath="$PROJECT_DIR$/django_app/battle/static/style/defaults.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fabfile.py" afterPath="$PROJECT_DIR$/fabfile.py" />
     </list>
     <ignored path="Kixeye Challenge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -363,7 +357,19 @@
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
+  </component>
+  <component name="PublishConfig">
+    <servers>
+      <server id="d1b88854-d34f-475a-90a3-8c4bc87d0c92">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+    </servers>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
