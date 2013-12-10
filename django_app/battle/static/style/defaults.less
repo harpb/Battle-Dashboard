@@ -1,0 +1,166 @@
+@import "utilities.less";
+
+*::-moz-selection {
+    background-color: #FFFFCC;
+    color: #555555;
+}
+
+h1::-moz-selection, h2::-moz-selection, h3::-moz-selection {
+    background-color: #F1C1C2;
+    color: #222222;
+}
+
+.ui *::-moz-selection {
+    background-color: #CCE2FF;
+}
+
+html, body {
+    font-size: 15px;
+    height: 100%;
+    position: relative;
+}
+
+body {
+    background: url("http://semantic-ui.com/images/bg.jpg") repeat scroll 0 0 #FCFCFC;
+    color: #555555;
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    margin: 0;
+    min-width: 320px;
+    padding: 0;
+    text-rendering: optimizelegibility;
+}
+
+body > .content {
+    background: url("http://semantic-ui.com/images/bg.jpg") repeat scroll 0 0 #FCFCFC;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.container {
+    width: 915px;
+    margin: auto;
+    &.fluid {
+        width: 100%;
+    }
+}
+
+/**
+STICKY
+**/
+.sticky {
+    position: absolute !important;
+    &.top {
+        top: 0px;
+    }
+    &.right {
+        right: 0px;
+    }
+    &.bottom {
+        bottom: 0px;
+    }
+    &.left {
+        left: 0px;
+    }
+}
+
+.row {
+    height: 100%;
+}
+
+.vertical-align {
+    letter-spacing: -0.31em
+}
+
+.vertical-align:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle
+}
+
+.vertical-align-middle, .vertical-align-bottom {
+    display: inline-block;
+    letter-spacing: normal;
+    max-width: 100%
+}
+
+.vertical-align-middle {
+    vertical-align: middle
+}
+
+.vertical-align-bottom {
+    vertical-align: bottom
+}
+
+.height-1-1 {
+    height: 100%
+}
+
+.height-1-2 {
+    height: 50%
+}
+
+// Hero
+.hero {
+    margin: 2em 0px 2em 0px;
+    padding-bottom: 30px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #DDDDDD;
+    position: relative;
+    .header{
+        font-weight: 200 !important;
+    }
+
+    h1{
+        font-size: 5em !important;
+        margin-top: 1em !important;
+        line-height: 1em !important;
+        .sub.header{
+            font-size: 2rem !important;
+        }
+    }
+    .introduction{
+//        position: absolute;
+//        top: 40px;
+    }
+}
+
+.marketing.hero{
+    margin: 0px;
+    padding-bottom: 0px;
+}
+
+
+// Parallax
+.parallax.marketing {
+    .header{
+        font-weight: normal !important;
+        margin-top: 0px !important;
+        line-height: 1em !important;
+    }
+    h1{
+        font-size: 6em !important;
+    }
+    h2{
+        font-size: 4em !important;
+    }
+    h3{
+        font-size: 3em !important;
+    }
+    h4{
+        font-size: 1.7em !important;
+    }
+    .segment{
+        padding: 5em 0em 3em 0em !important;
+        margin: 0px !important;
+    }
+    .background.segment {
+        background: #000000;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        background-size: cover;
+    }
+
+}

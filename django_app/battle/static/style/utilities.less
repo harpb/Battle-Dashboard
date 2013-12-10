@@ -1,0 +1,187 @@
+@line-height-computed: 20px;
+
+/****************************************************************
+** UTILITIES
+***************************************************************/
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-justify {
+    text-align: justify;
+}
+
+.push-down {
+    margin-bottom: 1em;
+}
+
+.push-left {
+    margin-left: 1em;
+}
+
+.push-right {
+    margin-right: 1em;
+}
+
+.push-up {
+    margin-top: 1em;
+}
+
+.scrollable {
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+// Responsive
+@media (max-width: 768px) {
+    #table-of-content {
+        margin-left: 0px;
+        border-left-width: 1px;
+    }
+}
+
+@media (min-width: 1600px) {
+    #table-of-content {
+        margin-left: -41px;
+    }
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+
+.no-border-radius {
+    border-radius: 0px;
+}
+
+code {
+    overflow-x: auto;
+}
+
+.line-of-text
+, .two-line-of-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: @line-height-computed;
+    display: block;
+}
+
+.two-line-of-text{
+    height: @line-height-computed * 2;
+}
+.fixed-top,
+.fixed-bottom {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    margin-bottom: 0; // remove 18px margin for default navbar
+}
+
+
+/** LINK STATES **/
+a {
+    color: #008ebb;
+}
+
+a.link{
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #00bfff;
+}
+
+a:visited {
+    color: #774580;
+    text-decoration: none;
+}
+
+a:active{
+    background: #008eff;
+    color: white;
+}
+
+/** GRID **/
+.container{
+    width: 915px;
+    margin: auto;
+    &.fluid{
+        width: 100%;
+    }
+}
+
+.hero{
+    margin: 2em 0px 2em 0px;
+    padding-bottom: 30px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+/**
+ROWS
+**/
+.row{
+    height: 100%;
+}
+
+.vertical-align{letter-spacing:-0.31em}
+.vertical-align:before{content:'';display:inline-block;height:100%;vertical-align:middle}
+.vertical-align-middle,.vertical-align-bottom{display:inline-block;letter-spacing:normal;max-width:100%}
+.vertical-align-middle{vertical-align:middle}
+.vertical-align-bottom{vertical-align:bottom}
+.height-1-1{height:100%}
+.height-1-2{height:50%}
+
+/**
+STICKY
+**/
+.sticky{
+    position: absolute !important;
+    &.top {
+        top: 0px;
+    }
+    &.right {
+        right: 0px;
+    }
+    &.bottom {
+        bottom: 0px;
+    }
+    &.left {
+        left: 0px;
+    }
+
+    &.height{
+        //        top: 0px;
+        //        bottom: 0px;
+        overflow: auto;
+    }
+}

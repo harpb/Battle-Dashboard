@@ -1,0 +1,7 @@
+.container {
+  width: 915px;
+  margin: auto;
+}
+.container.fluid {
+  width: 100%;
+}

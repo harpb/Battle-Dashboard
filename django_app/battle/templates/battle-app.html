@@ -1,9 +1,5 @@
 {% extends "semantic-ui-base.html" %}
 
-{% block extra-css %}
-<link rel="stylesheet" href="/static/battle/battle.css"/>
-{%endblock%}
-
 {% block extra-js %}
 <script src="/static/bower_components/underscore/underscore.js"></script>
 <script src="/static/battle/angular_form.js"></script>
@@ -98,8 +94,8 @@
                 <td ng-class="{positive: battle.winner == battle.defender.resource_uri}"><< battle.defender.nickname >>
                     (#<< battle.defender.id >>)
                 </td>
-                <td><< battle.start >></td>
-                <td><< battle.end >></td>
+                <td><< battle.start | date:'medium' >></td>
+                <td><< battle.end | date:'medium' >></td>
             </tr>
             </tbody>
             <tfoot>
@@ -209,7 +205,7 @@
                 ng-dblclick="editPlayer(player)"
                 ng-switch="player.editing">
                 <td ng-switch-default>
-                    <a href="/player/<< player.id >>/">
+                    <a href="/player/<<player.id >>/">
                         << player.nickname >>
                     </a>
                 </td>
@@ -235,8 +231,8 @@
                 <td><< player.wins >></td>
                 <td><< player.losses >></td>
                 <td><< player.current_win_streak >></td>
-                <td><< player.created >></td>
-                <td><< player.last_seen >></td>
+                <td><< player.created | date:'medium' >></td>
+                <td><< player.last_seen | date:'medium' >></td>
 
                 <td ng-switch-when="true" ng-click="updatePlayer(player)">
                     <div class="ui action input">
