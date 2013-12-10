@@ -42,14 +42,17 @@ The specification says to include in the response if there was an error or not w
 # Angular webapp
 
 1. Shows battles and players stats using the API.
-2. Create a new battle and player via the App usin the API		
+2. Create a new battle and player via the App usin the API	
+![New Player](http://cl.ly/image/1f3G3Q191703/Image%202013-12-09%20at%207.02.51%20PM.png)	
 3. Form validation is done on the backend using Django form and the API returns the errors, which are displayed on the front-end
+![Errors](http://cl.ly/image/2H1A2i2p0k0F/Image%202013-12-09%20at%207.03.47%20PM.png)
 		
 
 # Django App
 1. The player's stats are available via `/player/<id>/` rather than `/users/<userid>`. I am just using Django (not API or AngularJS app) in order to show my ease with using Django for presenting data - [`/player/1/`](http://battle.harpb.com/player/1/)
 
 2. To search by nickname: [`/player/search/?nickname=harp`](http://battle.harpb.com/player/search/?nickname=harp). If the user does not exists or nickname is not provided, redirect to battle dashboard.
+
 3. There is no endpoint to display battle logs for a specified time range because the functionality is available via dashboard and API.
 		
 
