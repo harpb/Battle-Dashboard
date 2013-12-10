@@ -3,23 +3,17 @@ I opted for different API responses and url format for the system. I assume that
 
 # Install
 Requirements:
+- npm and nodejs (for AngularJs front-end)
+- nginx (for prod)
 
-- python-mysqldb
-- npm
-- nodejs
-- nginx
-
-Specific for Ubuntu machine:
+Specific for __Ubuntu__ machine:
 
 1. Clones the githup repository and install pip requirements. 
     > fab prod setup
 2. Uses apt-get to install system level modules and then pip for python modules 
     > fab prod build_pyenv
-3. Run django migrations and then runs nginx with django under gevent
+3. Run django migrations and then runs nginx with django under gevent.
     > fab prod refresh
-
-
-
 
 # Api Urls
 The specification has `POST /users/<userid>` as an API endpoint while `GET /users/<userid>` as a webapp, which is overloading the endpoint with responsibility. I believe in separating out api and application endpoints.
